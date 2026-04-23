@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #1a1816;
+  color: #f6f6f5;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* subtle grain overlay for warmth */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  z-index: 100;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence baseFrequency='0.9'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(241, 138, 27, 0.6); }
+  70% { box-shadow: 0 0 0 12px rgba(241, 138, 27, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(241, 138, 27, 0); }
+}
+
+.pulse-ring { animation: pulse-ring 1.8s infinite; }
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up { animation: slide-up 0.22s ease-out; }
